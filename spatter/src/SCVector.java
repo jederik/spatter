@@ -36,8 +36,8 @@ public class SCVector {
 			if (bias>0) {
 				result.put(i, true);
 			}
-			else if (bias>0) {
-				result.put(i, true);
+			else if (bias<0) {
+				result.put(i, false);
 			}
 			else {
 				result.put(i, Math.random()<.5);
@@ -82,4 +82,27 @@ public class SCVector {
 		return sb.toString();
 	}
 	
+	static final private int DEFAULT_LENGTH = 80;
+	
+	public static void main(String[] args) {
+		SCVector v1 = new SCVector(DEFAULT_LENGTH);
+		SCVector v2 = new SCVector(DEFAULT_LENGTH);
+		v1.randomize();
+		v2.randomize();
+		System.out.println(v1);
+		System.out.println(v2);
+		System.out.println(sum(v1, v2));
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
