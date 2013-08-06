@@ -60,7 +60,7 @@ public class SCVector {
 	
 	public SCVector(int length) {
 		this.length = length;
-		data = new byte[length / 8];
+		data = new byte[length / 8 + 1];
 	}
 	
 	public void randomize() {
@@ -91,34 +91,34 @@ public class SCVector {
 		return sb.toString();
 	}
 	
-	static final private int DEFAULT_LENGTH = 8000;
+	static final private int DEFAULT_LENGTH = 83;
 	
 	public static void main(String[] args) {
-//		SCVector v1 = new SCVector(DEFAULT_LENGTH);
-//		SCVector v2 = new SCVector(DEFAULT_LENGTH);
-//		v1.randomize();
-//		v2.randomize();
-//		SCVector sum = sum(v1, v2);
-//		System.out.println(v1);
-//		System.out.println(v2);
-//		System.out.println(sum);
-//		System.out.println(match(v1, sum));
-//		System.out.println(match(v2, sum));
-//		SCVector comp = new SCVector(DEFAULT_LENGTH);
-//		comp.randomize();
-//		System.out.println(match(comp, sum));
+		SCVector v1 = new SCVector(DEFAULT_LENGTH);
+		SCVector v2 = new SCVector(DEFAULT_LENGTH);
+		v1.randomize();
+		v2.randomize();
+		SCVector sum = sum(v1, v2);
+		System.out.println(v1);
+		System.out.println(v2);
+		System.out.println(sum);
+		System.out.println(match(v1, sum));
+		System.out.println(match(v2, sum));
+		SCVector comp = new SCVector(DEFAULT_LENGTH);
+		comp.randomize();
+		System.out.println(match(comp, sum));
 		
-		SCVector set = new SCVector(DEFAULT_LENGTH);
-		SCVector[] v = new SCVector[100];
-		for (int t=0; t<100; t++) {
-			v[t] = new SCVector(DEFAULT_LENGTH);
-			v[t].randomize();
+//		SCVector set = new SCVector(DEFAULT_LENGTH);
+//		SCVector[] v = new SCVector[100];
+//		for (int t=0; t<100; t++) {
+//			v[t] = new SCVector(DEFAULT_LENGTH);
+//			v[t].randomize();
 //			set = sum(set, v[t]);
-		}
-		set = sum(v);
-		for (int t=0; t<100; t++) {
-			System.out.println(match(set, v[t]));
-		}
+//		}
+////		set = sum(v);
+//		for (int t=0; t<100; t++) {
+//			System.out.println(match(set, v[t]));
+//		}
 	}
 }
 
