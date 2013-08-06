@@ -45,6 +45,15 @@ public class SCVector {
 		}
 		return result;
 	}
+	
+	static public double match(SCVector op1, SCVector op2) {
+		SCVector xor = xor(op1, op2);
+		int matchCount = 0;
+		for (int i=0; i<xor.length; i++) {
+			if (!xor.get(i)) matchCount++;
+		}
+		return ((double) matchCount) / xor.length;
+	}
 
 	private byte[] data;
 	private int length;
@@ -76,22 +85,40 @@ public class SCVector {
 	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder(data.length * 8);
-		for (int i=0; i<data.length*8; i++) {
+		for (int i=0; i<length; i++) {
 			sb.append(get(i) ? '1' : '0');
 		}
 		return sb.toString();
 	}
 	
-	static final private int DEFAULT_LENGTH = 80;
+	static final private int DEFAULT_LENGTH = 8000;
 	
 	public static void main(String[] args) {
-		SCVector v1 = new SCVector(DEFAULT_LENGTH);
-		SCVector v2 = new SCVector(DEFAULT_LENGTH);
-		v1.randomize();
-		v2.randomize();
-		System.out.println(v1);
-		System.out.println(v2);
-		System.out.println(sum(v1, v2));
+//		SCVector v1 = new SCVector(DEFAULT_LENGTH);
+//		SCVector v2 = new SCVector(DEFAULT_LENGTH);
+//		v1.randomize();
+//		v2.randomize();
+//		SCVector sum = sum(v1, v2);
+//		System.out.println(v1);
+//		System.out.println(v2);
+//		System.out.println(sum);
+//		System.out.println(match(v1, sum));
+//		System.out.println(match(v2, sum));
+//		SCVector comp = new SCVector(DEFAULT_LENGTH);
+//		comp.randomize();
+//		System.out.println(match(comp, sum));
+		
+		SCVector set = new SCVector(DEFAULT_LENGTH);
+		SCVector[] v = new SCVector[100];
+		for (int t=0; t<100; t++) {
+			v[t] = new SCVector(DEFAULT_LENGTH);
+			v[t].randomize();
+//			set = sum(set, v[t]);
+		}
+		set = sum(v);
+		for (int t=0; t<100; t++) {
+			System.out.println(match(set, v[t]));
+		}
 	}
 }
 
