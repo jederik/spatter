@@ -55,7 +55,9 @@ public class SCVector {
 	}
 	
 	public void randomize() {
-		
+		for (int i = 0; i < data.length; i++) {
+			data[i] = (byte) (Math.random() * 256);
+		}
 	}
 	
 	public boolean get(int i) {
