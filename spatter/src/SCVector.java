@@ -21,6 +21,8 @@ public class SCVector {
 	
 	static public SCVector sum(SCVector... operands) {
 		
+		if (operands.length == 0) return new SCVector(0);
+		
 		int length = operands[0].getLength();
 		SCVector result = new SCVector(length);
 		
@@ -108,17 +110,17 @@ public class SCVector {
 		comp.randomize();
 		System.out.println(match(comp, sum));
 		
-//		SCVector set = new SCVector(DEFAULT_LENGTH);
-//		SCVector[] v = new SCVector[100];
-//		for (int t=0; t<100; t++) {
-//			v[t] = new SCVector(DEFAULT_LENGTH);
-//			v[t].randomize();
+		SCVector set = new SCVector(DEFAULT_LENGTH);
+		SCVector[] v = new SCVector[100];
+		for (int t=0; t<100; t++) {
+			v[t] = new SCVector(DEFAULT_LENGTH);
+			v[t].randomize();
 //			set = sum(set, v[t]);
-//		}
-////		set = sum(v);
-//		for (int t=0; t<100; t++) {
-//			System.out.println(match(set, v[t]));
-//		}
+		}
+		set = sum(v);
+		for (int t=0; t<100; t++) {
+			System.out.println(match(set, v[t]));
+		}
 	}
 }
 
